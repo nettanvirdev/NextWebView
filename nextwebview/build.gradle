@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.levelpixel.nextwebview'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         minSdk 26
-        targetSdk 33
+        targetSdk 35
     }
 
     buildFeatures {
