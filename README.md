@@ -382,11 +382,11 @@ For support, please open an issue in the repository or contact us at support@lev
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image1.jpg" alt="Main Activity" width="280">
-  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image2.jpg" alt="Browser Activity" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image1.jpeg" alt="Main Activity" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image2.jpeg" alt="Browser Activity" width="280">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image3.jpg" alt="Settings Screen" width="280">
-  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image4.jpg" alt="Ad Blocking Demo" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image3.jpeg" alt="Settings Screen" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/NextWebView/refs/heads/master/images/image4.jpeg" alt="Ad Blocking Demo" width="280">
 </p>
