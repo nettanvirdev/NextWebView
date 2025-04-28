@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#00FF10</color>
+    <color name="red">#F80000</color>
+
+    <color name="background_W">#F2F3F6</color>
+    <color name="colorBottomBar_W">#FFFFFFFF</color>
+    <color name="colorTextPrimary_W">#000000</color>
+    <color name="colorTextSecondary_W">#B3000000</color>
+    <color name="colorTextHint_W">#80000000</color>
+    <color name="colorCard_W">#FFFFFF</color>
+
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorSecondary">#205421</color>
+    <!-- Dark Theme -->
+    <color name="background">#121212</color>
+    <color name="colorBottomBar">#1E1E1E</color>
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#B3FFFFFF</color>
+    <color name="colorTextHint">#80FFFFFF</color>
+    <color name="colorCard">#1E1E1E</color>
+
+
+</resources>

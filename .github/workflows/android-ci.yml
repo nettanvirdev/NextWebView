@@ -1,0 +1,113 @@
+name: Android CI/CD Pipeline
+
+on:
+  push:
+    tags:
+      - "v*" # Trigger on tags like v1.0.0, v2.3.1, etc.
+
+jobs:
+  build:
+    name: Build AAR & APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+          cache: "gradle"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up NDK
+        run: |
+          echo "y" | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "ndk;27.0.12077973"
+          echo "NDK_ROOT=${ANDROID_HOME}/ndk/27.0.12077973" >> $GITHUB_ENV
+
+      - name: Get Tag Version
+        id: tag_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Make Gradlew Executable
+        run: chmod +x ./gradlew
+
+      # Build Library (AAR)
+      - name: Build Debug AAR
+        run: ./gradlew :duneweb:assembleDebug
+
+      - name: Build Release AAR
+        run: ./gradlew :duneweb:assembleRelease
+
+      - name: Verify Debug AAR
+        run: ls -la duneweb/build/outputs/aar/duneweb-debug.aar
+
+      - name: Verify Release AAR
+        run: ls -la duneweb/build/outputs/aar/duneweb-release.aar
+
+      # Build Sample App (APK)
+      - name: Build Debug APK
+        run: ./gradlew :app:assembleDebug
+
+      - name: Verify Debug APK
+        run: ls -la app/build/outputs/apk/debug/*.apk
+
+      # Publish Releases
+      - name: Create Library Release
+        id: create_library_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            duneweb/build/outputs/aar/duneweb-debug.aar
+            duneweb/build/outputs/aar/duneweb-release.aar
+          draft: false
+          prerelease: false
+          name: nextwebview Library v${{ steps.tag_version.outputs.VERSION }}
+          body: |
+            ## nextwebview Library v${{ steps.tag_version.outputs.VERSION }}
+
+            ### Library Artifacts
+            - **Release AAR**: Production-ready library with optimizations
+            - **Debug AAR**: Library with debugging symbols and logs enabled
+
+            ### Installation
+
+            #### Gradle
+            ```groovy
+            implementation 'com.github.nettanvirdev:nextwebview:${{ steps.tag_version.outputs.VERSION }}'
+            ```
+
+            #### Gradle Kotlin DSL
+            ```kotlin
+            implementation("com.github.nettanvirdev:nextwebview:${{ steps.tag_version.outputs.VERSION }}")
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Create Sample App Release
+        id: create_app_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            app/build/outputs/apk/debug/*.apk
+          draft: false
+          prerelease: false
+          name: nextwebview Demo App v${{ steps.tag_version.outputs.VERSION }}
+          body: |
+            ## nextwebview Demo App v${{ steps.tag_version.outputs.VERSION }}
+
+            This is a sample application demonstrating the nextwebview library capabilities.
+
+            ### Features in this release:
+            - Ad blocking
+            - Popup blocking
+            - Download management
+            - Custom user agent
+
+            ### Installation
+            Download and install the APK on your Android device.
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

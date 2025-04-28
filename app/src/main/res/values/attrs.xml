@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CupertinoSwitch">
+        <attr name="switchWidth" format="dimension"/>
+        <attr name="switchHeight" format="dimension"/>
+        <attr name="switchDuration" format="integer"/>
+        <attr name="trackOnColor" format="color"/>
+        <attr name="trackOffColor" format="color"/>
+        <attr name="sliderColor" format="color"/>
+        <attr name="sliderRadius" format="dimension"/>
+        <attr name="sliderShadowEnabled" format="boolean"/>
+        <attr name="sliderShadowColor" format="color"/>
+        <attr name="sliderShadowRadius" format="dimension"/>
+        <attr name="cupertinoSwitchStyle" format="reference"/>
+        <attr name="android:checked"/>
+        <attr name="android:enabled"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="ThemeAttributes">
+        <attr name="backgroundColor" format="color" />
+        <attr name="colorTextPrimary" format="color" />
+        <attr name="colorTextSecondary" format="color" />
+        <attr name="colorTextHint" format="color" />
+        <attr name="cardColor" format="color" />
+        <attr name="colorPrimary" format="color" />
+        <attr name="colorSecondary" format="color" />
+    </declare-styleable>
+
+
+
+</resources>
