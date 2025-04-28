@@ -175,18 +175,16 @@ public class TabsActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull TabViewHolder holder, int position) {
-            // Store position in a final local variable to use in click listeners
-            final int itemPosition = position;
-            TabItem tab = tabs.get(itemPosition);
+            TabItem tab = tabs.get(position);
             holder.titleTextView.setText(tab.title);
             holder.urlTextView.setText(tab.url);
             
             // Highlight current tab
-            holder.itemView.setSelected(itemPosition == currentTabIndex);
+            holder.itemView.setSelected(position == currentTabIndex);
             
             // Click to switch to this tab
             holder.itemView.setOnClickListener(v -> {
-                currentTabIndex = holder.getAdapterPosition();
+                currentTabIndex = position;
                 setResultAndFinish();
             });
             

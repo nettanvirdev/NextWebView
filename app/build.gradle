@@ -23,19 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true
-    }
-    
-    // Add lint configuration
-    lint {
-        abortOnError false  // Don't fail build for lint errors during CI
-        checkReleaseBuilds false  // Don't check release builds
-        baseline file("lint-baseline.xml")  // Create a baseline file
-        disable 'RecyclerView', 'ObsoleteSdkInt', 'UnusedResources', 'StaticFieldLeak', 'UnusedIds'
     }
 }
 

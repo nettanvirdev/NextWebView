@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
-
 android {
     namespace 'com.levelpixel.nextwebview'
     compileSdk 35
@@ -18,55 +17,42 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-    
     publishing {
-        singleVariant('release') {
+        singleVariant("release") {
             withSourcesJar()
             withJavadocJar()
         }
     }
+
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                
-                groupId = 'com.github.nettanvirdev'
-                artifactId = 'nextwebview'
-                version = '1.0.0'
-                
-                pom {
-                    name = 'NextWebView'
-                    description = 'A secure, enhanced WebView component for Android with built-in ad blocking and security features'
-                    url = 'https://github.com/nettanvirdev/nextwebview'
-                    licenses {
-                        license {
-                            name = 'Custom License'
-                            url = 'https://github.com/nettanvirdev/nextwebview/blob/master/LICENSE'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'nettanvirdev'
-                            name = 'Next Developer'
-                        }
-                    }
-                }
+
+
+publishing {
+    publications {
+        create("release", MavenPublication.class) {
+            groupId = "com.github.nettanvirdev"
+            artifactId = "nextwebview"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
 }
+
+
+
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'

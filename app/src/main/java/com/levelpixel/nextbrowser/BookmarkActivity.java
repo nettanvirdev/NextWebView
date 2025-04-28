@@ -237,19 +237,16 @@ public class BookmarkActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(v -> {
                 // Return result to MainActivity
                 Intent resultIntent = new Intent();
-                int adapterPosition = holder.getAdapterPosition();
-                if (adapterPosition != RecyclerView.NO_POSITION) {
-                    resultIntent.putExtra("url", bookmarks.get(adapterPosition).url);
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
-                }
+                resultIntent.putExtra("url", item.url);
+                setResult(RESULT_OK, resultIntent);
+                finish();
             });
             
             holder.deleteButton.setOnClickListener(v -> {
-                int adapterPosition = holder.getAdapterPosition();
-                if (adapterPosition != RecyclerView.NO_POSITION) {
-                    bookmarks.remove(adapterPosition);
-                    notifyItemRemoved(adapterPosition);
+                int pos = holder.getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION) {
+                    bookmarks.remove(pos);
+                    notifyItemRemoved(pos);
                     saveBookmarks();
                     updateEmptyState();
                     Toast.makeText(BookmarkActivity.this, "Bookmark deleted", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,4 @@
 jdk:
   - openjdk17
 before_install:
-  - chmod +x gradlew
-  - chmod +x scripts/prepareJitpackEnvironment.sh
   - ./scripts/prepareJitpackEnvironment.sh
