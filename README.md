@@ -1,7 +1,7 @@
 # NextWebView
 
 <p align="center">
-  <img src="images/logo.png" alt="NextWebView Logo" width="200">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/dunewebview/main/images/logo.png" alt="NextWebView Logo" width="200">
 </p>
 
 <p align="center">
@@ -382,11 +382,11 @@ For support, please open an issue in the repository or contact us at support@lev
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="images/image1.jpg" alt="Main Activity" width="280">
-  <img src="images/image2.jpg" alt="Browser Activity" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/dunewebview/main/images/image1.jpg" alt="Main Activity" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/dunewebview/main/images/image2.jpg" alt="Browser Activity" width="280">
 </p>
 
 <p align="center">
-  <img src="images/image3.jpg" alt="Settings Screen" width="280">
-  <img src="images/image4.jpg" alt="Ad Blocking Demo" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/dunewebview/main/images/image3.jpg" alt="Settings Screen" width="280">
+  <img src="https://raw.githubusercontent.com/nettanvirdev/dunewebview/main/images/image4.jpg" alt="Ad Blocking Demo" width="280">
 </p>
