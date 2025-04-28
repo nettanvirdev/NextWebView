@@ -37,9 +37,15 @@ jobs:
           EOL
 
           # Fix app build.gradle to use compatible AGP version
-          if [ -f "app/build.gradle" ]; then
+          if [ -f "gradle/libs.versions.toml" ]; then
             # Modify version in libs.versions.toml
             sed -i 's/agp = "8.9.0"/agp = "8.0.2"/g' gradle/libs.versions.toml
+            sed -i 's/compileSdk 35/compileSdk 33/g' app/build.gradle
+            sed -i 's/targetSdk 35/targetSdk 33/g' app/build.gradle
+            sed -i 's/compileSdk 35/compileSdk 33/g' nextwebview/build.gradle
+            sed -i 's/targetSdk 35/targetSdk 33/g' nextwebview/build.gradle
+            sed -i 's/minifyEnabled true/minifyEnabled false/g' nextwebview/build.gradle
+            sed -i 's/appcompat:1.7.0/appcompat:1.6.1/g' nextwebview/build.gradle
           fi
 
           # Ensure nextwebview module build.gradle is properly configured
