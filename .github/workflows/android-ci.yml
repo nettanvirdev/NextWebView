@@ -36,16 +36,21 @@ jobs:
           }
           EOL
 
-          # Fix app build.gradle to use compatible AGP version
+          # Add suppression for compileSdk warning
+          echo "android.suppressUnsupportedCompileSdk=35" >> gradle.properties
+
+          # Fix app/src/main/AndroidManifest.xml to remove package attribute if it exists
+          if grep -q 'package="com.levelpixel.nextbrowser"' app/src/main/AndroidManifest.xml; then
+            sed -i 's/package="com.levelpixel.nextbrowser"//' app/src/main/AndroidManifest.xml
+          fi
+
+          # Update AGP version in libs.versions.toml
           if [ -f "gradle/libs.versions.toml" ]; then
-            # Modify version in libs.versions.toml
-            sed -i 's/agp = "8.9.0"/agp = "8.0.2"/g' gradle/libs.versions.toml
-            sed -i 's/compileSdk 35/compileSdk 33/g' app/build.gradle
-            sed -i 's/targetSdk 35/targetSdk 33/g' app/build.gradle
-            sed -i 's/compileSdk 35/compileSdk 33/g' nextwebview/build.gradle
-            sed -i 's/targetSdk 35/targetSdk 33/g' nextwebview/build.gradle
-            sed -i 's/minifyEnabled true/minifyEnabled false/g' nextwebview/build.gradle
-            sed -i 's/appcompat:1.7.0/appcompat:1.6.1/g' nextwebview/build.gradle
+            sed -i 's/agp = "8.9.0"/agp = "8.1.2"/g' gradle/libs.versions.toml
+            # Add android-library plugin if not exists
+            if ! grep -q "android-library" gradle/libs.versions.toml; then
+              echo 'android-library = { id = "com.android.library", version.ref = "agp" }' >> gradle/libs.versions.toml
+            fi
           fi
 
           # Ensure nextwebview module build.gradle is properly configured
